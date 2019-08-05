@@ -15,7 +15,7 @@ import java.util.stream.StreamSupport;
 
 @Service
 @Slf4j
-public class ArticleService {
+public class ArticleService implements ArticleServiceRepository{
 
     private final ArticleRepository repository;
 
@@ -24,19 +24,22 @@ public class ArticleService {
         this.repository = repository;
     }
 
+    @Override
     public void save(Article article){
         Article savedArticle = repository.save(article);
-        log.info("Saved article: " + savedArticle.toString());
+        log.info("Saved Article: " + savedArticle.toString());
     }
 
+    @Override
     public void delete(Integer id){
         Article articleToDelete = repository.findArticleById(id);
         if(articleToDelete != null){
             repository.deleteById(id);
-            log.info("Deleted article:" + articleToDelete.toString());
+            log.info("Deleted Article:" + articleToDelete.toString());
         }
     }
 
+    @Override
     public List<Article> getAll(){
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(repository.findAll().iterator(), Spliterator.NONNULL), false)

@@ -20,6 +20,7 @@ public class Article implements Serializable, Comparable<Article> {
     private String title;
 
     @Column(length = 1000000)
+    //todo find out the purpose of the @Lob annotation
     @Lob
     @NotNull
     private String content;

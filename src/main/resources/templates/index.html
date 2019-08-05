@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,13 +50,13 @@
            <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav col-md-6">
                     <li class="nav-item">                        
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add an Article</a>
+                        <a class="nav-link" href="/home/editor">Add an Article</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Offer an Article</a>
@@ -71,20 +71,27 @@
         </div>
     </nav>
     
-    <span class="bar" style="position: fixed; top: 0px; left: 0px; width: 7603, 241 height: 3px;
-    background-color: rgb(247, 155, 26); z-index: 9999999;"></span>
-      
-    <div class="preloader">
-        ::before
-    </div>
+    <!--<span class="bar" style="position: fixed; top: 0px; left: 0px; width: 7603, 241 height: 3px;-->
+    <!--background-color: rgb(247, 155, 26); z-index: 9999999;"></span>-->
+      <!---->
+    <!--<div class="preloader">-->
+        <!--::before-->
+    <!--</div>-->
     
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 justify-content-center">
-                    <h1>Hala Madrid</h1>
+                    <h1>Welcome to the Page!</h1>
                 </div>
-                <div class="col-12">article</div>
+                <div class="col-8">
+                    <div th:each="article : ${articles}">
+                        <h3 th:text="${article.title}"></h3>
+                        <p th:text="${article.content}"></p>
+                        <a th:href="@{/home/editor/delete} + ${article.id}">remove</a>
+                        <hr/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
