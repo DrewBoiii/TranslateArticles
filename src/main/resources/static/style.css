@@ -1,0 +1,33 @@
+body {
+    font-size: 20px;
+    font-family: "-apple-system", 
+        BlinkMacSystemFont, 
+        Arial, 
+        sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+header div, footer div, nav div, nav, header {
+    background-color: mediumaquamarine;
+}
+
+div {
+    background-color: lightcyan;
+}
+
+div, nav, ul, li {
+/*    border: 1px solid black;*/
+}
+
+div a {
+    color: #456;
+}
+
+footer div {
+    color: #456;
+    text-align: center;
+    padding: 40px 0;
+}
