@@ -7,7 +7,7 @@ import java.util.List;
 public interface ArticleServiceRepository {
 
     void save(Article article);
-    void delete(Integer id);
+    void delete(Long id);
     List<Article> getAll();
 
 }

@@ -5,10 +5,10 @@ import translatearticles.persistence.model.Article;
 
 import java.util.List;
 
-public interface ArticleRepository extends CrudRepository<Article, Integer> {
+public interface ArticleRepository extends CrudRepository<Article, Long> {
 
     List<Article> findByTitle(String title);
-    Article findArticleById(Integer id);
+    Article findArticleById(Long id);
     void deleteById(Integer id);
 
 }

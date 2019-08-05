@@ -19,8 +19,8 @@ public class Article implements Serializable, Comparable<Article> {
     @NotNull
     private String title;
 
+    // TODO: 05.08.2019 find out the purpose of the @Lob annotation 
     @Column(length = 1000000)
-    //todo find out the purpose of the @Lob annotation
     @Lob
     @NotNull
     private String content;
@@ -33,7 +33,7 @@ public class Article implements Serializable, Comparable<Article> {
     }
 
     @Override
-    public int compareTo(Article o) {
-        return Long.compare(this.createdAt.getTime(), o.createdAt.getTime());
+    public int compareTo(Article article) {
+        return Long.compare(this.createdAt.getTime(), article.createdAt.getTime());
     }
 }

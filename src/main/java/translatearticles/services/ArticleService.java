@@ -31,12 +31,10 @@ public class ArticleService implements ArticleServiceRepository{
     }
 
     @Override
-    public void delete(Integer id){
+    public void delete(Long id) {
         Article articleToDelete = repository.findArticleById(id);
-        if(articleToDelete != null){
-            repository.deleteById(id);
-            log.info("Deleted Article:" + articleToDelete.toString());
-        }
+        repository.deleteById(id);
+        log.info("Deleted Article:" + articleToDelete.toString());
     }
 
     @Override
