@@ -72,51 +72,25 @@
 </nav>
 
 <!--<span class="bar" style="position: fixed; top: 0px; left: 0px; width: 7603, 241 height: 3px;-->
-    <!--background-color: rgb(247, 155, 26); z-index: 9999999;"></span>-->
-
+<!--background-color: rgb(247, 155, 26); z-index: 9999999;"></span>-->
+<!---->
 <!--<div class="preloader">-->
-    <!--::before-->
+<!--::before-->
 <!--</div>-->
 
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 justify-content-center">
-                <h1>Article Editor</h1>
+                <h1>Articles</h1>
             </div>
-
-            <!--<div th:if="${#fields.hasErrors()}">-->
-                <!--<span class="validationError">-->
-                    <!--Please correct the problems below and resubmit.-->
-                <!--</span>-->
-            <!--</div>-->
-
-            <div class="col-10">
-                <form action="#" th:action="@{/home/editor/submit}" th:object="${article}" method="post">
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors()}">
-                        <span class="validationError">Please correct the problems below</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="usr">Topic</label>
-                        <input type="text" class="form-control" id="usr" th:field="*{title}">
-                        <br>
-                        <span class="validationError alert alert-danger"
-                              th:if="${#fields.hasErrors('title')}"
-                              th:errors="*{title}">Title Error</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="comment">Content</label>
-                        <input type="text" class="form-control" id="comment" th:field="*{content}">
-                        <br>
-                        <span class="validationError alert alert-danger"
-                              th:if="${#fields.hasErrors('content')}"
-                              th:errors="*{content}">Content Error</span>
-                    </div>
-
-                    <button type="submit" class="btn btn-success">Save</button>
-                </form>
+            <div class="col-8">
+                <div th:each="article : ${allArticles}">
+                    <h3 th:text="${article.title}"></h3>
+                    <p th:text="${article.content}"></p>
+                    <a th:href="@{/home/editor/delete/} + ${article.id}">remove</a>
+                    <hr/>
+                </div>
             </div>
         </div>
     </div>

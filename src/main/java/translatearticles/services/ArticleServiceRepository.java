@@ -9,5 +9,6 @@ public interface ArticleServiceRepository {
     void save(Article article);
     void delete(Long id);
     List<Article> getAll();
+    List<Article> getAllByMonth();
 
 }

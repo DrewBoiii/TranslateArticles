@@ -23,8 +23,14 @@ public class ArticleController {
 
     @GetMapping
     public String homePage(Model model){
-        model.addAttribute("articles", articleService.getAll());
+        model.addAttribute("articles", articleService.getAllByMonth());
         return "index";
+    }
+
+    @GetMapping("/articles")
+    public String articlesPage(Model model){
+        model.addAttribute("allArticles", articleService.getAll());
+        return "articles";
     }
 
     @GetMapping("/editor")

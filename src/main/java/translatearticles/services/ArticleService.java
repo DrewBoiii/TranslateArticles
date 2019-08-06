@@ -6,10 +6,7 @@ import org.springframework.stereotype.Service;
 import translatearticles.persistence.dao.ArticleRepository;
 import translatearticles.persistence.model.Article;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Spliterator;
-import java.util.Spliterators;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -45,4 +42,15 @@ public class ArticleService implements ArticleServiceRepository{
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Article> getAllByMonth() {
+        Date dateMonthAgo = new Date();
+        int month = dateMonthAgo.getMonth();
+        dateMonthAgo.setMonth(month - 1);
+        log.info("Date is " + dateMonthAgo.toString());
+        return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(repository.findArticlesByCreatedAtIsAfter(dateMonthAgo).iterator(), Spliterator.NONNULL), false)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+    }
 }
