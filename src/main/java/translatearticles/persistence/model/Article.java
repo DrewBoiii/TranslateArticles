@@ -19,7 +19,6 @@ public class Article implements Serializable, Comparable<Article> {
     private Long id;
 
     @Column
-    @NotBlank(message = "Title is required")
     @Size(min = 2, max = 100)
     private String title;
 
