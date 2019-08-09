@@ -1,10 +1,11 @@
-package translatearticles.services;
+package translatearticles.services.model;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import translatearticles.persistence.dao.ArticleRepository;
 import translatearticles.persistence.model.Article;
+import translatearticles.services.dao.ArticleServiceRepository;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,7 +13,7 @@ import java.util.stream.StreamSupport;
 
 @Service
 @Slf4j
-public class ArticleService implements ArticleServiceRepository{
+public class ArticleService implements ArticleServiceRepository {
 
     private final ArticleRepository repository;
 

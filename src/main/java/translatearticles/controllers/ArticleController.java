@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import translatearticles.persistence.model.Article;
-import translatearticles.services.ArticleServiceRepository;
+import translatearticles.services.dao.ArticleServiceRepository;
 
 import javax.validation.Valid;
 
@@ -14,22 +14,22 @@ import javax.validation.Valid;
 @RequestMapping("/home")
 public class ArticleController {
 
-    private ArticleServiceRepository articleService;
+    private ArticleServiceRepository articleServiceRepository;
 
     @Autowired
-    public ArticleController(ArticleServiceRepository articleService) {
-        this.articleService = articleService;
+    public ArticleController(ArticleServiceRepository articleServiceRepository) {
+        this.articleServiceRepository = articleServiceRepository;
     }
 
     @GetMapping
     public String homePage(Model model){
-        model.addAttribute("articles", articleService.getAllByMonth());
+        model.addAttribute("articles", articleServiceRepository.getAllByMonth());
         return "index";
     }
 
     @GetMapping("/articles")
     public String articlesPage(Model model){
-        model.addAttribute("allArticles", articleService.getAll());
+        model.addAttribute("allArticles", articleServiceRepository.getAll());
         return "articles";
     }
 
@@ -45,14 +45,14 @@ public class ArticleController {
             return "editor";
         }
 
-        articleService.save(article);
+        articleServiceRepository.save(article);
 
         return "redirect:../";
     }
 
     @RequestMapping("/editor/delete/{article_id}")
     public String deleteArticle(@PathVariable("article_id") Long id){
-        articleService.delete(id);
+        articleServiceRepository.delete(id);
         return "redirect:../../";
     }
 

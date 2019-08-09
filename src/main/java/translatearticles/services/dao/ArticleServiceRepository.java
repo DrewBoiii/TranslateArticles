@@ -1,4 +1,4 @@
-package translatearticles.services;
+package translatearticles.services.dao;
 
 import translatearticles.persistence.model.Article;
 
