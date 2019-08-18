@@ -4,7 +4,7 @@ import translatearticles.persistence.model.Article;
 
 import java.util.List;
 
-public interface ArticleServiceRepository {
+public interface ArticleService {
 
     void save(Article article);
     void delete(Long id);

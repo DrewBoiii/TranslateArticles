@@ -2,11 +2,11 @@ package translatearticles.services.dao;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import translatearticles.persistence.model.User;
+import translatearticles.exception.EmailNotFoundException;
 
-public interface UserDetailsServiceRepository {
+public interface UserDetailsService extends org.springframework.security.core.userdetails.UserDetailsService {
 
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
-    void save (User user);
+    UserDetails loadUserByEmail(String email) throws EmailNotFoundException;
 
 }

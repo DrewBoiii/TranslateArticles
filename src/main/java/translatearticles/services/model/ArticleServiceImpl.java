@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import translatearticles.persistence.dao.ArticleRepository;
 import translatearticles.persistence.model.Article;
-import translatearticles.services.dao.ArticleServiceRepository;
+import translatearticles.services.dao.ArticleService;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,12 +13,12 @@ import java.util.stream.StreamSupport;
 
 @Service
 @Slf4j
-public class ArticleService implements ArticleServiceRepository {
+public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleRepository repository;
 
     @Autowired
-    public ArticleService(ArticleRepository repository) {
+    public ArticleServiceImpl(ArticleRepository repository) {
         this.repository = repository;
     }
 
