@@ -1,11 +1,11 @@
-package translatearticles.services.model;
+package translatearticles.service.model;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import translatearticles.persistence.dao.ArticleRepository;
 import translatearticles.persistence.model.Article;
-import translatearticles.services.dao.ArticleService;
+import translatearticles.service.dao.ArticleService;
 
 import java.util.*;
 import java.util.stream.Collectors;

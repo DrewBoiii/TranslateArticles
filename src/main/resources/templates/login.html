@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <!--<link rel="stylesheet" href="../static/css/styles.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
@@ -34,11 +34,11 @@
                     <a class="nav-link" href="#">Offer an Article</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav col-md-6 justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Sign in</a>
-                </li>
-            </ul>
+            <!--<ul class="nav navbar-nav col-md-6 justify-content-end">-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="/login">Sign in</a>-->
+                <!--</li>-->
+            <!--</ul>-->
         </div>
     </div>
 </nav>
@@ -47,26 +47,27 @@
     <div class="row content">
         <div class="col-sm-4 text-left">
             <br>
-            <!--<div th:if="${param.error}" class="alert alert-danger">-->
-                <!--<div>Invalid username or password!</div>-->
-            <!--</div>-->
-
-            <!--<div th:if="${param.logout}">-->
-                <!--<div class="alert alert-warning">You have been sign out.</div>-->
-            <!--</div>-->
-            
-            <form th:action="@{login/submit}" method="post" id="loginForm">
+            <form th:action="@{/login}" method="post" id="loginForm">
                 <fieldset>
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">Invalid username or
+                            password.</div>
+                    </div>
+
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">You have been logged out.</div>
+                    </div>
+
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="username" type="text" class="form-control" name="username" placeholder="login" required="required"/>
-                        <!--<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</span>-->
+                        <input id="username" type="text" class="form-control" autofocus="autofocus"
+                               name="username" placeholder="login" required="required"/>
                     </div>
                     <br/>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="password" type="password" class="form-control" name="password" placeholder="password" required="required"/>
-                        <!--<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Pass Error</span>-->
+                        <input id="password" type="password" class="form-control"
+                               name="password" placeholder="password" required="required"/>
                     </div>
                     <br>
                     <div>
@@ -74,7 +75,6 @@
                     </div>
                 </fieldset>
             </form>
-            
             <br/>
             <div class="alert alert-info">
                 <p>New here? click <a th:href="@{/registration}">this</a> to sign up!</p>

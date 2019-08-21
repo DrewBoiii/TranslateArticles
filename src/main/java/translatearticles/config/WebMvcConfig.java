@@ -12,8 +12,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/home").setViewName("home");
-        registry.addViewController("/register/signin");
+        registry.addViewController("/home").setViewName("index");
+        registry.addViewController("/").setViewName("index");
+//        registry.addViewController("/login");
     }
 
     // TODO: 05.08.2019 No mapping for GET /static/css/styles.css

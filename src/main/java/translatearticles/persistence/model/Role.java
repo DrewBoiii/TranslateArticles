@@ -3,7 +3,6 @@ package translatearticles.persistence.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
@@ -13,9 +12,12 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private final String name;
+    private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private final List<User> users;
+    public Role() {}
+
+    public Role(String name) {
+        this.name = name;
+    }
 
 }

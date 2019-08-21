@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">`
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../static/css/styles.css">
+  <!--<link rel="stylesheet" href="../static/css/styles.css">-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
@@ -62,9 +63,14 @@
                         <a class="nav-link" href="#">Offer an Article</a>
                     </li>
                 </ul>
+               <ul class="nav navbar-nav col-md-6 justify-content-end">
+                   <li sec:authorize="isAuthenticated()" class="nav-item">
+                       <a th:href="@{/logout}">Logout</a>
+                   </li>
+               </ul>
                 <ul class="nav navbar-nav col-md-6 justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register/login">Sign in</a>
+                    <li sec:authorize="!isAuthenticated()" class="nav-item">
+                        <a class="nav-link" href="/login">Sign in</a>
                     </li>
                 </ul>
            </div>
@@ -82,7 +88,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 justify-content-center">
-                    <h1>Welcome to the Page!</h1>
+                    <h1>Welcome to the Page, <span sec:authentication="principal.getUsername()">Random User</span>!</h1>
                 </div>
                 <div class="col-8">
                     <div th:each="article : ${articles}">
