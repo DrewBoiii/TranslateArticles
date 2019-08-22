@@ -17,7 +17,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 //        registry.addViewController("/login");
     }
 
-    // TODO: 05.08.2019 No mapping for GET /static/css/styles.css
+    // TODO: 05.08.2019 No mapping for GET /static/css/style.css
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");

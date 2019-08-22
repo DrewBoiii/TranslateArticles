@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,9 +63,12 @@
                     <a class="nav-link" href="#">Offer an Article</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav col-md-6 justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Sign in</a>
+            <ul class="nav navbar-nav col-md-6 justify-content-end ">
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Sign out</a>
+                </li>
+                <li sec:authorize="isAnonymous()" class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Sign in</a>
                 </li>
             </ul>
         </div>

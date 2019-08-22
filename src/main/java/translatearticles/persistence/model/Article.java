@@ -28,6 +28,9 @@ public class Article implements Serializable, Comparable<Article> {
     @NotBlank(message = "Content is required")
     private String content;
 
+    @ManyToOne
+    private User user;
+
     private Date createdAt;
 
     @PrePersist
