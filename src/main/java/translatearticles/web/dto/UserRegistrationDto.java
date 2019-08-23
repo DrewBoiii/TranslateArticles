@@ -2,14 +2,14 @@ package translatearticles.web.dto;
 
 import lombok.Data;
 import translatearticles.constraint.annotation.FieldMatch;
+import translatearticles.constraint.annotation.ValidEmail;
 
 import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @FieldMatch.List({
-        @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
-        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
+        @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must be matched"),
+        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must be matched")
 })
 @Data
 public class UserRegistrationDto {
@@ -23,11 +23,11 @@ public class UserRegistrationDto {
     @NotEmpty
     private String confirmPassword;
 
-    @Email
+    @ValidEmail
     @NotEmpty
     private String email;
 
-    @Email
+    @ValidEmail
     @NotEmpty
     private String confirmEmail;
 
