@@ -3,6 +3,7 @@ package translatearticles.web.dto;
 import lombok.Data;
 import translatearticles.constraint.annotation.FieldMatch;
 import translatearticles.constraint.annotation.ValidEmail;
+import translatearticles.constraint.annotation.ValidPhoneNumber;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
@@ -31,6 +32,7 @@ public class UserRegistrationDto {
     @NotEmpty
     private String confirmEmail;
 
+    @ValidPhoneNumber
     @NotEmpty
     private String phoneNumber;
 

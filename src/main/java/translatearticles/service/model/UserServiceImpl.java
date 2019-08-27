@@ -10,6 +10,7 @@ import translatearticles.persistence.model.User;
 import translatearticles.service.dao.UserService;
 import translatearticles.web.dto.UserRegistrationDto;
 
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 
 @Slf4j
@@ -27,6 +28,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(UserRegistrationDto registration) {
+        User user = getInitUser(registration);
+
+        log.info("Saved user:" + user.toString());
+
+        return userRepository.save(user);
+    }
+
+    private User getInitUser(UserRegistrationDto registration){
         User user = new User();
 
         user.setUsername(registration.getUsername());
@@ -35,9 +44,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(registration.getPassword()));
         user.setRoles(Arrays.asList(new Role("ROLE_USER")));
 
-        log.info("Saved user:" + user.toString());
-
-        return userRepository.save(user);
+        return user;
     }
 
     @Override

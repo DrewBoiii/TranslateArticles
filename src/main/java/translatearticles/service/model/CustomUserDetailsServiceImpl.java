@@ -38,17 +38,6 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService {
                 mapRolesToAuthorities(user.getRoles()));
     }
 
-    @Override
-    public UserDetails loadUserByEmail(String email) throws EmailNotFoundException {
-        User user = userRepository.findUserByEmail(email);
-        if (user == null) {
-            throw new EmailNotFoundException("Invalid email or password.");
-        }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),
-                user.getPassword(),
-                mapRolesToAuthorities(user.getRoles()));
-    }
-
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection <Role> roles) {
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
