@@ -1,5 +1,6 @@
 package translatearticles.web.controllers;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -37,7 +38,9 @@ public class ArticleController {
 
     @GetMapping("/articles")
     public String articlesPage(Model model, @AuthenticationPrincipal User user){
-        translatearticles.persistence.model.User customUser = userService.findByEmail(user.getUsername());
+        // TODO: 28.08.2019 fix bugs with username
+//        translatearticles.persistence.model.User customUser = userService.findByEmail(user.getUsername());
+        translatearticles.persistence.model.User customUser = userService.findByUsername(user.getUsername());
 
         model.addAttribute("allArticles", articleService.getArticlesByUser(customUser));
 
@@ -59,7 +62,9 @@ public class ArticleController {
 
         log.info("Authenticated user: " + user.toString());
 
-        translatearticles.persistence.model.User customUser = userService.findByEmail(user.getUsername());
+        // TODO: 28.08.2019 fix bugs with username
+//        translatearticles.persistence.model.User customUser = userService.findByEmail(user.getUsername());
+        translatearticles.persistence.model.User customUser = userService.findByUsername(user.getUsername());
 
         article.setUser(customUser);
 
