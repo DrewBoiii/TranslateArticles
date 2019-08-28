@@ -36,8 +36,11 @@ public class ArticleController {
     }
 
     @GetMapping("/articles")
-    public String articlesPage(Model model){
-        model.addAttribute("allArticles", articleService.getAll());
+    public String articlesPage(Model model, @AuthenticationPrincipal User user){
+        translatearticles.persistence.model.User customUser = userService.findByEmail(user.getUsername());
+
+        model.addAttribute("allArticles", articleService.getArticlesByUser(customUser));
+
         return "articles";
     }
 

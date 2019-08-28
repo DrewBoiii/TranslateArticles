@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import translatearticles.persistence.dao.ArticleRepository;
 import translatearticles.persistence.model.Article;
+import translatearticles.persistence.model.User;
 import translatearticles.service.dao.ArticleService;
 
 import java.util.*;
@@ -51,6 +52,14 @@ public class ArticleServiceImpl implements ArticleService {
         log.info("Date is " + dateMonthAgo.toString());
         return StreamSupport
                 .stream(Spliterators.spliteratorUnknownSize(repository.findArticlesByCreatedAtIsAfter(dateMonthAgo).iterator(), Spliterator.NONNULL), false)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Article> getArticlesByUser(User user) {
+        return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(repository.findArticlesByUser(user).iterator(), Spliterator.NONNULL), false)
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
     }
