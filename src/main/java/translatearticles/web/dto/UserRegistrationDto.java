@@ -7,6 +7,7 @@ import translatearticles.constraint.annotation.ValidPhoneNumber;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @FieldMatch.List({
         @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must be matched"),
@@ -15,9 +16,11 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class UserRegistrationDto {
 
+    @Size(min = 3, max = 30)
     @NotEmpty
     private String username;
 
+    @Size(min = 6, max = 30)
     @NotEmpty
     private String password;
 

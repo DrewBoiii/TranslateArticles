@@ -10,7 +10,6 @@ import translatearticles.persistence.model.User;
 import translatearticles.service.dao.UserService;
 import translatearticles.web.dto.UserRegistrationDto;
 
-import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 
 @Slf4j
@@ -49,15 +48,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String username) {
-        User user = userRepository.findUserByUsername(username);
-//        log.info(user.toString());
-        return user;
+        return userRepository.findUserByUsername(username);
     }
 
     @Override
     public User findByEmail(String email) {
-        User user = userRepository.findUserByEmail(email);
-//        log.info(user.toString());
-        return user;
+        return userRepository.findUserByEmail(email);
     }
 }
