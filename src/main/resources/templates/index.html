@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
@@ -96,8 +96,10 @@
                     <div th:each="article : ${articles}">
                         <h3 th:text="${article.title}"></h3>
                         <p th:text="${article.content}"></p>
-                        <p th:text="${article.createdAt}"></p>
-                        <p th:text="${article.user}"></p>
+                        <span>posted at </span>
+                        <span th:text="${article.createdAt.toGMTString()}"></span>
+                        <span> by </span>
+                        <span th:text="${article.user.username}"></span>
                         <hr/>
                     </div>
                 </div>
